@@ -180,6 +180,7 @@ typedef struct BandInfo
     uint32_t size;
     const char* name;
     uint32_t band_mode;
+    bool    rx_only;
 } BandInfo;
 
 /**
@@ -200,6 +201,7 @@ typedef struct
 
 extern const BandInfoSet bandInfos[];
 extern const int BAND_INFO_SET_NUM;
+#define BAND_INFO_SET_DEFAULT 0 // first entry is default, this is a "catch all region"
 extern uint8_t bandinfo_idx;
 
 typedef const BandInfo BandInfo_c;
@@ -210,7 +212,7 @@ typedef struct band_regs_s
     VfoReg band[MAX_BAND_NUM];
 } BandRegs;
 
-bool band_enabled[MAX_BAND_NUM]; // we store which band is to be used (or ignored)
+extern bool band_enabled[MAX_BAND_NUM]; // we store which band is to be used (or ignored)
 
 typedef enum
 {
